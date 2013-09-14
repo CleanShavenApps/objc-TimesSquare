@@ -125,6 +125,8 @@
 
 - (void)setSelectedDate:(NSDate *)newSelectedDate;
 {
+    if (self.tableView.isDecelerating) return;
+    
     // clamp to beginning of its day
     NSDate *startOfDay = [self clampDate:newSelectedDate toComponents:NSDayCalendarUnit|NSMonthCalendarUnit|NSYearCalendarUnit];
     
